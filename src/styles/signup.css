@@ -1,0 +1,72 @@
+.signup-wrapper {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(248, 248, 248);
+  background-image: url("../assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.signup-wrapper .signup-card {
+  max-width: 30rem;
+  margin: auto 1rem;
+  border-radius: 10px;
+  box-shadow: 0 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #222;
+  background: #fff;
+  padding: 2rem 3rem;
+}
+.signup-wrapper .signup-card h2 {
+  font-weight: bolder;
+  font-size: 2rem;
+}
+.signup-wrapper .signup-card .signup-form {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.signup-wrapper .signup-card .signup-form .form-control {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid #222;
+}
+.signup-wrapper .signup-card .signup-form .form-control input {
+  width: 100%;
+  font-size: 1.1rem;
+  border: none;
+}
+.signup-wrapper .signup-card .signup-form .form-control input:focus {
+  outline: none;
+}
+.signup-wrapper .signup-card .signup-form .form-control input::-moz-placeholder {
+  color: rgba(34, 34, 34, 0.4117647059);
+}
+.signup-wrapper .signup-card .signup-form .form-control input::placeholder {
+  color: rgba(34, 34, 34, 0.4117647059);
+}
+.signup-wrapper .signup-card .signup-form .register-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: #6dabe4;
+  border-radius: 5px;
+  transition: all 0.1s linear;
+}
+.signup-wrapper .signup-card .signup-form .register-btn:hover {
+  background: #3a91e1;
+}
+.signup-wrapper .signup-card .signup-form .already-member {
+  font-size: 1rem;
+  color: #222;
+}/*# sourceMappingURL=signup.css.map */

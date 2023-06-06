@@ -1,0 +1,30 @@
+.login-wrapper .login-card .form-control #remember {
+  width: auto;
+}
+.login-wrapper .login-card .form-control:nth-child(3) {
+  font-size: 1rem;
+  border-bottom: none;
+}
+.login-wrapper .login-card .login-btn {
+  padding: 0.7rem 1.5rem !important;
+}
+.login-wrapper .login-card .create-acc {
+  font-size: 1rem;
+  color: #222;
+}
+.login-wrapper .login-card .other-login {
+  cursor: pointer;
+  border: 1px solid rgba(34, 34, 34, 0.2470588235);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  border-radius: 2px;
+}
+.login-wrapper .login-card .other-login svg {
+  font-size: 1.7rem;
+  color: red;
+}/*# sourceMappingURL=login.css.map */

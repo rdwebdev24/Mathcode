@@ -1,0 +1,36 @@
+.landing-wrapper{
+    min-height: 100vh;
+    background-image: url('../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    .navbar{
+        position: fixed;
+        width: 100%;
+        top: 0;
+        padding: 1rem;
+    }
+    .landing-card{
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: flex-start;
+        max-width: 30rem;
+        h2{font-size: 2rem;text-transform: capitalize;}
+        button{
+            padding: 0.7rem 1.2rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 1.05rem;
+            color: #222;
+        }
+    }
+}
