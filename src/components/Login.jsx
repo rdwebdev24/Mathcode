@@ -50,7 +50,7 @@ export const Login = () => {
                 <a onClick={()=>navigate(`/register`)} className='create-acc' href="#">Create an account</a>
                 <div className="other-login">
                    <AiFillGoogleCircle/>
-                    <span>login withGoogle</span>
+                    <span id='signInDiv'>login withGoogle</span>
                 </div>
             </form>
         </div>
