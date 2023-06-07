@@ -1,0 +1,80 @@
+.problem-tags-wrapper {
+  padding: 2rem 1rem 1rem 1rem;
+  max-width: 60rem;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.problem-tags-wrapper .tags-wrapper1 .ques-level {
+  display: flex;
+  gap: 1rem;
+}
+.problem-tags-wrapper .tags-wrapper1 .ques-level button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  color: #666;
+  cursor: pointer;
+}
+.problem-tags-wrapper .tags-wrapper1 .ques-level button:hover {
+  background: rgba(0, 10, 32, 0.1529411765);
+}
+.problem-tags-wrapper .tags-wrapper2 {
+  display: flex;
+  gap: 1rem;
+}
+.problem-tags-wrapper .tags-wrapper2 .tag2 select {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  color: #666;
+  cursor: pointer;
+}
+.problem-tags-wrapper .tags-wrapper2 .search-topic {
+  display: flex;
+  align-items: center;
+  background: #e9e9ed;
+  padding: 0 0.7rem;
+  border-radius: 5px;
+  color: #666;
+  gap: 0.5rem;
+}
+.problem-tags-wrapper .tags-wrapper2 .search-topic input {
+  background: #e9e9ed;
+  border: none;
+}
+.problem-tags-wrapper .tags-wrapper2 .search-topic input:focus {
+  outline: none;
+}
+.problem-tags-wrapper .problem-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+}
+.problem-tags-wrapper .problem-wrapper h3 {
+  text-transform: capitalize;
+  color: #555;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont {
+  display: flex;
+  flex-direction: column;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-title {
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 2rem;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-item {
+  display: flex;
+  gap: 2rem;
+  cursor: pointer;
+  padding: 0.7rem 1rem;
+  color: #444;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-item:nth-child(even) {
+  background: #f7f8fa;
+}/*# sourceMappingURL=mainpage.css.map */
