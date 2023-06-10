@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes , Route } from 'react-router-dom';
+import { BrowserRouter, Routes , Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
@@ -8,6 +8,9 @@ import { Questionpage } from './components/Questionpage';
 import { Landing } from './components/Landing';
 
 function App() {
+
+  const [user,setUser] = useState({});
+  
   const [quesId,setQuesId] = useState(5);
   const [problems,setproblems] = useState([]);
   
