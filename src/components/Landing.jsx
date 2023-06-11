@@ -1,7 +1,7 @@
 import React from 'react'
-import '../styles/landing.css'
 import {AiOutlineRight} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
+import '../styles/landing.css'
 
 export const Landing = () => {
     const navigate = useNavigate();

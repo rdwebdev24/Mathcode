@@ -5,10 +5,11 @@ import { Nav } from "./main-web/Nav";
 import {BsSearch} from 'react-icons/bs'
 import {FiCheckCircle} from 'react-icons/fi'
 import '../styles/main-web/mainpage.css'
+import { useGlobalContext } from "../config/Context";
 
 export const Main = ({ setQuesId, problems, setproblems }) => {
   const navigate = useNavigate();
-  const url = "http://localhost:5000/all";
+  const {url} = useGlobalContext();
 
   const handleNavigate = (id) => {
     setQuesId(id);
@@ -16,7 +17,7 @@ export const Main = ({ setQuesId, problems, setproblems }) => {
   };
 
   const fetch = async () => {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(url+'/all');
     setproblems(data);
   };
 

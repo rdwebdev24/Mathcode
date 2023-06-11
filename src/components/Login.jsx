@@ -1,16 +1,16 @@
 import React from 'react'
+import { useGlobalContext } from '../config/Context';
 import { useNavigate } from 'react-router-dom';
 import {AiFillGoogleCircle,AiFillLock} from 'react-icons/ai'
 import {FaUser} from 'react-icons/fa'
+import {getAuth , GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+import { initializeApp } from "firebase/app";
+import {authProvider} from '../config/Auth'
 import axios from 'axios';
 import '../styles/login.css'
-import { useEffect } from 'react';
-import jwt_decode from "jwt-decode";
 export const Login = () => {
-
-    const url = 'http://localhost:5000/login';
+    const {url} = useGlobalContext();
     const navigate = useNavigate();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const Data = new FormData(e.currentTarget);
@@ -22,7 +22,7 @@ export const Login = () => {
             'Access-Control-Allow-Origin': '*',
             'Content-type': 'application/json',
         }
-        const {data} = await axios.post(url,userData,headers);
+        const {data} = await axios.post(url+'/login',userData,headers);
         if(data.status==400){
             alert(data.msg);
             return;
@@ -30,36 +30,11 @@ export const Login = () => {
         localStorage.setItem("username",data.user.username)
         navigate('/problem-set/all')
     };
-
-    async function handleCallbackResponse(response) {
-        var userObject = jwt_decode(response.credential);
-        console.log(userObject);
-        const email = userObject.email;
-        const {data} = await axios.post('http://localhost:5000/userlogin',  {email} )
-        if(data.status == 200){
-            localStorage.setItem("username",data.user_[0].username)
-            navigate("/problem-set/all")
-        }
-        console.log(data," data");
-      
+    
+      const googleAuth = async () => {
+            const login = await authProvider.login();
+            if(login=='login') navigate('/problem-set/all')
       }
-      useEffect(() => {
-    
-        /* global google */  
-    
-        google.accounts.id.initialize({
-         client_id: "289351533564-jlscrklfq9ppjjk4kt5gdvjufl8guml3.apps.googleusercontent.com",
-         callback: handleCallbackResponse
-        })
-    
-        google.accounts.id.renderButton(
-         document.getElementById("signInDiv"),
-          { theme: "outline", size: "large" }
-        );
-    
-        return () => {
-        }
-      }, [])
 
   return (
     <section className='signup-wrapper login-wrapper'>
@@ -80,7 +55,7 @@ export const Login = () => {
                 </div>
                 <button className='register-btn login-btn' type='submit'>login</button>
                 <a onClick={()=>navigate(`/register`)} className='create-acc' href="#">Create an account</a>
-                <div className="other-login">
+                <div className="other-login" onClick={googleAuth}>
                    <AiFillGoogleCircle/>
                     <span id='signInDiv'>login withGoogle</span>
                 </div>
