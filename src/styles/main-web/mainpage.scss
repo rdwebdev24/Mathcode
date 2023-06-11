@@ -1,88 +1,112 @@
-.problem-tags-wrapper{
-    padding: 2rem 1rem 1rem 1rem;
-    max-width: 60rem;
-    margin: auto;
-    min-height: 100vh;
+.problem-tags-wrapper {
+  padding: 2rem 1rem 1rem 1rem;
+  max-width: 60rem;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .tags-wrapper1 {
+    .ques-level {
+      display: flex;
+      gap: 1rem;
+      button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        color: #666;
+        cursor: pointer;
+        &:hover {
+          background: #000a2027;
+        }
+      }
+    }
+  }
+
+  .tags-wrapper2 {
+    display: flex;
+    gap: 1rem;
+    .tag2 {
+      select {
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        border: none;
+        color: #666;
+        cursor: pointer;
+      }
+    }
+
+    .search-topic {
+      display: flex;
+      align-items: center;
+      background: #e9e9ed;
+      padding: 0 0.7rem;
+      border-radius: 5px;
+      color: #666;
+      gap: 0.5rem;
+      input {
+        background: #e9e9ed;
+        border: none;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .problem-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-
-    .tags-wrapper1{
-        .ques-level{
-            display: flex;
-            gap: 1rem;
-            button{
-                padding: 0.5rem 1rem;
-                border: none;
-                border-radius: 5px;
-                color: #666;
-                cursor: pointer;
-                &:hover{
-                    background: #000a2027;
-                }
-            }
-        }
+    font-family: "Poppins", sans-serif;
+    h3 {
+      text-transform: capitalize;
+      color: #555;
+      font-size: 1.4rem;
+      font-weight: 500;
     }
-
-    .tags-wrapper2{
-        display: flex;
-        gap: 1rem;
-        .tag2{
-            select{
-                padding: 0.5rem 1rem;
-                border-radius: 5px;
-                border: none;
-                color: #666;
-                cursor: pointer;
-            } 
+    .problem-cont {
+      display: flex;
+      flex-direction: column;
+      .problem-title {
+        padding: 0.5rem 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "status title title difficulty";
+        
+        .status {
+          grid-area: status;
         }
-
-        .search-topic{
-            display: flex;
-            align-items: center;
-            background: #e9e9ed;
-            padding: 0 0.7rem;
-            border-radius: 5px;
-            color: #666;
-            gap: 0.5rem;
-            input{
-                background: #e9e9ed;
-                border: none;
-                &:focus{
-                    outline: none;
-                }
-            }
+        .title {
+          grid-area: title;
         }
+        .difficulty {
+          grid-area: difficulty;
+        }
+      }
+      .problem-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "status title title difficulty";
+        cursor: pointer;
+        padding: 0.7rem 1rem;
+        color: #444;
+        .status {
+            grid-area: status;
+          }
+          .title {
+            text-align: start;
+            grid-area: title;
+          }
+          .difficulty {
+            grid-area: difficulty;
+          }
+        &:nth-child(even) {
+          background: #f7f8fa;
+        }
+      }
     }
-    
-    .problem-wrapper{
-        display: flex;
-        flex-direction: column;
-        font-family: 'Poppins', sans-serif;
-        h3{
-            text-transform: capitalize;
-            color: #555;
-            font-size: 1.4rem;
-            font-weight:500;
-        }
-        .problem-cont{
-            display:flex;
-            flex-direction:column;
-            .problem-title{
-                padding: 0.5rem 1rem;
-                display: flex;
-                gap: 2rem;
-            }
-            .problem-item{
-                display:flex;
-                gap:2rem;
-                cursor:pointer;
-                padding: 0.7rem 1rem;
-                color: #444;
-                &:nth-child(even){
-                    background: #f7f8fa;
-                }
-            }
-        }
-    }
+  }
 }

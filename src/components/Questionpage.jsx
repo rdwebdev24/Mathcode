@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import axios from  'axios';
+import { useGlobalContext } from '../config/Context';
 
 export const Questionpage = ({quesId,problems}) => {
-    const {desc,opt,difficulty,type} = problems[quesId-1]
+    console.log(quesId,problems[quesId].Ques);
+    const {desc,options,difficulty,type,level} = problems[quesId].Ques
     const [corrans,setCorrAns] = useState('');
-    const url = 'http://localhost:5000/addques';
+    const {url} = useGlobalContext();
     console.log(problems[quesId-1]);
 
     const changeHandler = (e) => {
@@ -22,7 +24,7 @@ export const Questionpage = ({quesId,problems}) => {
                 'Content-type': 'application/json',
             }
             const usrData = {username:localStorage.getItem('username'),quesId:quesId}
-            const {data} = await axios.post(url,usrData,headers)
+            const {data} = await axios.post(url+'/addques',usrData,headers)
             console.log(data);
 
         }
@@ -31,7 +33,7 @@ export const Questionpage = ({quesId,problems}) => {
   return (
     <div>
         <h4>{desc}</h4> 
-        {opt.map((item)=>{
+        {options.map((item)=>{
             return (
                 <div onChange={changeHandler} key={item}>
                     <input type="radio" name='opt' value={item}/>

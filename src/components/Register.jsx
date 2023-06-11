@@ -5,9 +5,10 @@ import {AiFillLock,AiOutlineUnlock} from 'react-icons/ai'
 import {GrMail} from 'react-icons/gr'
 import {FaUser} from 'react-icons/fa'
 import '../styles/signup.css'
+import { useGlobalContext } from '../config/Context';
 
 export const Register = () => {
-    const url = 'http://localhost:5000';
+    const {url} = useGlobalContext();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {

@@ -65,15 +65,38 @@
 }
 .problem-tags-wrapper .problem-wrapper .problem-cont .problem-title {
   padding: 0.5rem 1rem;
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "status title title difficulty";
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-title .status {
+  grid-area: status;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-title .title {
+  grid-area: title;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-title .difficulty {
+  grid-area: difficulty;
 }
 .problem-tags-wrapper .problem-wrapper .problem-cont .problem-item {
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "status title title difficulty";
   cursor: pointer;
   padding: 0.7rem 1rem;
   color: #444;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-item .status {
+  grid-area: status;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-item .title {
+  text-align: start;
+  grid-area: title;
+}
+.problem-tags-wrapper .problem-wrapper .problem-cont .problem-item .difficulty {
+  grid-area: difficulty;
 }
 .problem-tags-wrapper .problem-wrapper .problem-cont .problem-item:nth-child(even) {
   background: #f7f8fa;

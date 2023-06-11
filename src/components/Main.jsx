@@ -10,6 +10,8 @@ import { useGlobalContext } from "../config/Context";
 export const Main = ({ setQuesId, problems, setproblems }) => {
   const navigate = useNavigate();
   const {url} = useGlobalContext();
+  let [topics,setTopics] = useState([]);
+  const [filterarray,setFilterArray] = useState([]);
 
   const handleNavigate = (id) => {
     setQuesId(id);
@@ -18,12 +20,20 @@ export const Main = ({ setQuesId, problems, setproblems }) => {
 
   const fetch = async () => {
     const { data } = await axios.get(url+'/all');
+    const array = []
+    data.map((item)=>{
+      array.push(item.Ques.type)
+    })
+    const uniqueArray = Array.from(new Set(array))
+    setTopics(uniqueArray)
+    // console.log(data," aaa");
     setproblems(data);
   };
 
   useEffect(() => {
     fetch();
   }, []);
+
   return (
     <div>
       <Nav />
@@ -67,10 +77,11 @@ export const Main = ({ setQuesId, problems, setproblems }) => {
               <option value="" disabled>
                 topics
               </option>
-              <option value="trigo">trigo</option>
-              <option value="function">function</option>
-              <option value="limit">limit</option>
-              <option value="probability">probability</option>
+             {topics.map((item)=>{
+              return (
+                 <option key={item} value={item}>{item}</option>
+              )
+             })}
             </select>
           </div>
             
@@ -87,18 +98,18 @@ export const Main = ({ setQuesId, problems, setproblems }) => {
 
             <div className="problem-cont" >
             <div className="problem-title">
-                <span>status</span>
-                <span>title</span>
-                <span>difficulty</span>
+                <span className="status">status</span>
+                <span className="title">title</span>
+                <span className="difficulty">difficulty</span>
             </div>
             {problems.map((item,index)=>{
-                const {id,desc,difficulty} = item
+                const {desc,difficulty} = item.Ques
+                const id = item._id
                 return (
-                    <div className="problem-item" key={id} onClick={()=>handleNavigate(id)} >
-                    <span style={{color:"#22c06f"}}><FiCheckCircle/></span>
-                    <span>{desc}</span>
-                    <span>{difficulty}</span>
-                    <br/>
+                    <div className="problem-item" key={id} onClick={()=>handleNavigate(index)} >
+                    <span className="status" style={{color:"#22c06f"}}><FiCheckCircle/></span>
+                    <span className="title" >{String(desc).slice(0,30)}...</span>
+                    <span className="difficulty" >{difficulty}</span>
                     </div>
                 )
             })}
