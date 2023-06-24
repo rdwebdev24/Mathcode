@@ -1,6 +1,6 @@
 .landing-wrapper{
     min-height: 100vh;
-    background-image: url('../assets/bg.jpg');
+    background-image: url('../../assets/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -9,10 +9,16 @@
     font-family: 'Poppins', sans-serif;
     color: #fff;
     .navbar{
+        display: flex;
+        gap: 2rem;
+        align-items: center;
         position: fixed;
         width: 100%;
         top: 0;
         padding: 1rem;
+        .nav-ques{
+            cursor: pointer;
+        }
     }
     .landing-card{
         display: flex;

@@ -48,6 +48,27 @@
 .problem-tags-wrapper .tags-wrapper2 .search-topic input:focus {
   outline: none;
 }
+.problem-tags-wrapper .filters-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.problem-tags-wrapper .filters-div .tags {
+  display: flex;
+  gap: 0.7rem;
+  text-align: center;
+  align-items: center;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  color: #666;
+  background: #efefef;
+}
+.problem-tags-wrapper .filters-div .tags span {
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+}
 .problem-tags-wrapper .problem-wrapper {
   display: flex;
   flex-direction: column;

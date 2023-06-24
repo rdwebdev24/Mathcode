@@ -5,9 +5,6 @@
   font-size: 1rem;
   border-bottom: none;
 }
-.login-wrapper .login-card .login-btn {
-  padding: 0.7rem 1.5rem !important;
-}
 .login-wrapper .login-card .create-acc {
   font-size: 1rem;
   color: #222;

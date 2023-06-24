@@ -1,0 +1,26 @@
+.under-cnstrct{
+    background-image: url('../../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    flex-direction: column;
+    gap: 0.5rem;
+    .und-cnst-btn{
+        width: 8rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        font-size: 1.05rem;
+        color: #222;
+    }
+}

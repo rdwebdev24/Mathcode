@@ -2,30 +2,31 @@ import React, { useState } from 'react'
 import axios from  'axios';
 import { useGlobalContext } from '../config/Context';
 
-export const Questionpage = ({quesId,problems}) => {
-    console.log(quesId,problems[quesId].Ques);
-    const {desc,options,difficulty,type,level} = problems[quesId].Ques
+export const Questionpage = ({quesId}) => {
+    const {url , problems} = useGlobalContext();
+    console.log({quesId});
+    const {Ques}  = problems.filter(item=>item._id==quesId)[0]
+    const {desc,options,difficulty,type,level}  = Ques
     const [corrans,setCorrAns] = useState('');
-    const {url} = useGlobalContext();
-    console.log(problems[quesId-1]);
 
     const changeHandler = (e) => {
-        console.log(e.target.value);
         setCorrAns(e.target.value)
     }
     const submitHabdler = async (e) => {
         e.preventDefault();
-        console.log('aaa');
-        console.log(corrans);
-        if(problems[quesId-1].corrAns==corrans) {
+        if(options[Ques.corrAns]==corrans) {
             alert('correct');
-            const  headers = {
-                'Access-Control-Allow-Origin': '*',
-                'Content-type': 'application/json',
+            const isLogin = localStorage.getItem('mathcode-username');
+            if(isLogin){
+                const  headers = {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-type': 'application/json',
+                    'mode':'no-cors'
+                }
+                const usrData = {username:localStorage.getItem('mathcode-username'),quesId}
+                const {data} = await axios.post(url+'/userques',usrData,headers)
+                console.log(data);
             }
-            const usrData = {username:localStorage.getItem('username'),quesId:quesId}
-            const {data} = await axios.post(url+'/addques',usrData,headers)
-            console.log(data);
 
         }
         else alert('incorrect')

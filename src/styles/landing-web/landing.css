@@ -1,6 +1,6 @@
 .landing-wrapper {
   min-height: 100vh;
-  background-image: url("../assets/bg.jpg");
+  background-image: url("../../assets/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -10,10 +10,16 @@
   color: #fff;
 }
 .landing-wrapper .navbar {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
   position: fixed;
   width: 100%;
   top: 0;
   padding: 1rem;
+}
+.landing-wrapper .navbar .nav-ques {
+  cursor: pointer;
 }
 .landing-wrapper .landing-card {
   display: flex;

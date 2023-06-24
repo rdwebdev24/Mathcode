@@ -3,6 +3,7 @@ import {AiOutlineFire} from 'react-icons/ai'
 import {BsBell} from 'react-icons/bs'
 import {FaRegUserCircle} from 'react-icons/fa'
 import '../../styles/main-web/nav.css'
+import { Profile } from './Profile'
 
 export const Nav = () => {
   return (
@@ -17,6 +18,7 @@ export const Nav = () => {
             <a href='#'><BsBell/></a>
             <div className='streak'><AiOutlineFire/> <span>0</span></div>
             <a href='#'><FaRegUserCircle/></a>
+            <Profile/>
         </div>
     </nav>
   )

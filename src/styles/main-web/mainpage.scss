@@ -55,6 +55,27 @@
     }
   }
 
+  .filters-div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    .tags {
+      display: flex;
+      gap: 0.7rem;
+      text-align: center;
+      align-items: center;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      color: #666;
+      background: #efefef;
+      span {
+        cursor: pointer;
+        font-size: 0.8rem;
+        display: flex;
+      }
+    }
+  }
   .problem-wrapper {
     display: flex;
     flex-direction: column;
@@ -74,7 +95,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr;
         grid-template-areas: "status title title difficulty";
-        
+
         .status {
           grid-area: status;
         }
@@ -94,15 +115,15 @@
         padding: 0.7rem 1rem;
         color: #444;
         .status {
-            grid-area: status;
-          }
-          .title {
-            text-align: start;
-            grid-area: title;
-          }
-          .difficulty {
-            grid-area: difficulty;
-          }
+          grid-area: status;
+        }
+        .title {
+          text-align: start;
+          grid-area: title;
+        }
+        .difficulty {
+          grid-area: difficulty;
+        }
         &:nth-child(even) {
           background: #f7f8fa;
         }
