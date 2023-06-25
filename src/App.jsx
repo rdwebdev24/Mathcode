@@ -3,16 +3,16 @@ import './App.css';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
 import { useState } from 'react';
-import { Questionpage } from './components/Questionpage';
 import { Landing } from './components/Landing';
 import { UnderConst } from './components/UnderConst';
 import { Main } from './components/Main';
+import { Questionpage } from './components/Questionpage';
 
 function App() {
 
   const [user,setUser] = useState({});
   
-  const [quesId,setQuesId] = useState(5);
+  const [quesId,setQuesId] = useState();
   
   
   return (

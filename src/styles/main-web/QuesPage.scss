@@ -1,0 +1,100 @@
+.quespage-wrapper{
+    justify-content: center;
+    display: flex;
+    .quespage-card{
+        box-shadow:0px 4px 4px #00000034;
+        font-family: 'Ubuntu', sans-serif;
+        flex-direction: column;
+        padding: 2rem 1rem;
+        padding-bottom: 0;
+        min-height: 90vh;
+        max-width: 30rem;
+        display: flex;
+        gap: 1rem;
+        .ques-type{
+            color: #222222;
+            text-transform: capitalize;
+            font-size: 1.5rem;
+        }
+        .tags-section{
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            .q-diff{
+                padding: 0.3rem 0.5rem;
+                border-radius: 5px;
+                color: #fff;
+            }
+            .easy{ background: #2CC46B;}
+            .medium{background: #FEBD24;}
+            .hard{background: #FA7D8D;}
+            .q-dislike,.q-like{
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                svg{font-size: 1.1rem;}
+            }
+            .q-star{font-size: 1.3rem;color: #FEBD24;}
+            .q-like , .q-dislike , .q-star{cursor: pointer;}
+        }
+        .ques-desc{
+            color: #666666;
+        }
+        .ques-opt{
+            flex-direction: column;
+            display: flex;
+            gap: 0.7rem;
+            .optcnt1 , .optcnt2{
+                justify-content: space-between;
+                display: flex;
+                .opt{
+                    cursor: pointer;
+                    background: #F7F7F8;
+                    max-width: 10rem;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 3px;
+                    color: #666666;
+                    border: 1px solid transparent;
+                    transition: all 0.2s linear;
+                    &:hover{
+                        border: 1px solid #3333332d;
+                    }
+                }
+                .selected{
+                    background: #777;
+                    color: #fff;
+                    transform: scale(1.05);
+                }
+                .correct{
+                    background: #30c76fbb;
+                    color: #fff;
+                    transform: scale(1.05);
+                }
+                .incorrect{
+                    background: #FA7D8D;
+                    color: #fff;
+                    transform: scale(1.05);
+                }
+            }
+        }
+        .q-submit{
+            margin-top: 1rem;
+            padding: 0.5rem;
+            width: 100%;
+            max-width: 8rem;
+            background: #4FC0D0;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            text-transform: capitalize;
+            border-radius: 3px;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: all 0.2s linear;
+            &:hover{
+                background: #4fc0d0c7;
+            }
+        }
+    }
+}

@@ -9,6 +9,7 @@ import "../styles/main-web/mainpage.css";
 import { useGlobalContext } from "../config/Context";
 
 export const Main = ({ setQuesId }) => {
+  console.log('main');
   const navigate = useNavigate();
   const { url, topics, problems } = useGlobalContext();
   let [filterarray, setFilterArray] = useState(problems);
@@ -17,9 +18,10 @@ export const Main = ({ setQuesId }) => {
   topic:JSON.parse(localStorage.getItem('filters'))?JSON.parse(localStorage.getItem('filters')).topic:[],
   solved:JSON.parse(localStorage.getItem('filters'))?JSON.parse(localStorage.getItem('filters')).solved:"",
   level:''});
-console.log(filters);
+
   const handleNavigate = (id) => {
     setQuesId(id);
+    localStorage.setItem('mathcode-quesId',id);
     navigate(`/question`);
   };
 
@@ -50,11 +52,9 @@ console.log({filterarray,problems});
     filterReq()
     localStorage.setItem('filters',JSON.stringify(filters))
   }, [filters]);
-
   return (
     <div>
       <Nav />
-
       <div className="problem-tags-wrapper">
         <div className="tags-wrapper1">
           <div className="ques-level" >
@@ -183,7 +183,7 @@ console.log({filterarray,problems});
                     <FiCheckCircle style={{color:`${atmpQues.includes(id)?'#22c06f':'grey'}`}}/>
                   </span>
                   <span className="title">{String(desc).slice(0, 30)}...</span>
-                  <span className="difficulty">{difficulty}</span>
+                  <span className={`${difficulty} difficulty`}>{difficulty}</span>
                 </div>
               );
             })}

@@ -1,0 +1,113 @@
+.quespage-wrapper {
+  justify-content: center;
+  display: flex;
+}
+.quespage-wrapper .quespage-card {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2039215686);
+  font-family: "Ubuntu", sans-serif;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  padding-bottom: 0;
+  min-height: 90vh;
+  max-width: 30rem;
+  display: flex;
+  gap: 1rem;
+}
+.quespage-wrapper .quespage-card .ques-type {
+  color: #222222;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+.quespage-wrapper .quespage-card .tags-section {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.quespage-wrapper .quespage-card .tags-section .q-diff {
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  color: #fff;
+}
+.quespage-wrapper .quespage-card .tags-section .easy {
+  background: #2CC46B;
+}
+.quespage-wrapper .quespage-card .tags-section .medium {
+  background: #FEBD24;
+}
+.quespage-wrapper .quespage-card .tags-section .hard {
+  background: #FA7D8D;
+}
+.quespage-wrapper .quespage-card .tags-section .q-dislike, .quespage-wrapper .quespage-card .tags-section .q-like {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.quespage-wrapper .quespage-card .tags-section .q-dislike svg, .quespage-wrapper .quespage-card .tags-section .q-like svg {
+  font-size: 1.1rem;
+}
+.quespage-wrapper .quespage-card .tags-section .q-star {
+  font-size: 1.3rem;
+  color: #FEBD24;
+}
+.quespage-wrapper .quespage-card .tags-section .q-like, .quespage-wrapper .quespage-card .tags-section .q-dislike, .quespage-wrapper .quespage-card .tags-section .q-star {
+  cursor: pointer;
+}
+.quespage-wrapper .quespage-card .ques-desc {
+  color: #666666;
+}
+.quespage-wrapper .quespage-card .ques-opt {
+  flex-direction: column;
+  display: flex;
+  gap: 0.7rem;
+}
+.quespage-wrapper .quespage-card .ques-opt .optcnt1, .quespage-wrapper .quespage-card .ques-opt .optcnt2 {
+  justify-content: space-between;
+  display: flex;
+}
+.quespage-wrapper .quespage-card .ques-opt .optcnt1 .opt, .quespage-wrapper .quespage-card .ques-opt .optcnt2 .opt {
+  cursor: pointer;
+  background: #F7F7F8;
+  max-width: 10rem;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 3px;
+  color: #666666;
+  border: 1px solid transparent;
+  transition: all 0.2s linear;
+}
+.quespage-wrapper .quespage-card .ques-opt .optcnt1 .opt:hover, .quespage-wrapper .quespage-card .ques-opt .optcnt2 .opt:hover {
+  border: 1px solid rgba(51, 51, 51, 0.1764705882);
+}
+.quespage-wrapper .quespage-card .ques-opt .optcnt1 .selected, .quespage-wrapper .quespage-card .ques-opt .optcnt2 .selected {
+  background: #777;
+  color: #fff;
+  transform: scale(1.05);
+}
+.quespage-wrapper .quespage-card .ques-opt .optcnt1 .correct, .quespage-wrapper .quespage-card .ques-opt .optcnt2 .correct {
+  background: rgba(48, 199, 111, 0.7333333333);
+  color: #fff;
+  transform: scale(1.05);
+}
+.quespage-wrapper .quespage-card .ques-opt .optcnt1 .incorrect, .quespage-wrapper .quespage-card .ques-opt .optcnt2 .incorrect {
+  background: #FA7D8D;
+  color: #fff;
+  transform: scale(1.05);
+}
+.quespage-wrapper .quespage-card .q-submit {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 8rem;
+  background: #4FC0D0;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border-radius: 3px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s linear;
+}
+.quespage-wrapper .quespage-card .q-submit:hover {
+  background: rgba(79, 192, 208, 0.7803921569);
+}/*# sourceMappingURL=QuesPage.css.map */

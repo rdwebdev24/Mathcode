@@ -124,6 +124,9 @@
         .difficulty {
           grid-area: difficulty;
         }
+        .easy{ color: #2CC46B;}
+        .medium{color: #FEBD24;}
+        .hard{color: #FA7D8D;}
         &:nth-child(even) {
           background: #f7f8fa;
         }
