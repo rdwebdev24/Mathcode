@@ -2,8 +2,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0.5rem 0rem;
+  padding: 0.7rem 0rem;
   border-bottom: 1px solid #eee;
+  box-shadow: 0 1px 2px #dedede;
 }
 .navbar-main .nav-list {
   color: #666;
@@ -18,21 +19,54 @@
   color: #333;
 }
 .navbar-main .nav-list2 {
-  font-size: 1.2rem;
   gap: 1.5rem;
   align-items: center;
 }
-.navbar-main .nav-list2 .streak {
+.navbar-main .nav-list2 .streak, .navbar-main .nav-list2 .credits {
   align-items: center;
   display: flex;
+  border: 1px solid #FA7D09;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  gap: 0.5rem;
 }
-.navbar-main .nav-list2 a {
+.navbar-main .nav-list2 .streak .streak-child, .navbar-main .nav-list2 .streak .credits-child, .navbar-main .nav-list2 .credits .streak-child, .navbar-main .nav-list2 .credits .credits-child {
+  justify-content: center;
+  display: flex;
+  gap: 0.2rem;
+  background: #FA7D09;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+}
+.navbar-main .nav-list2 .user-div {
   display: grid;
   place-items: center;
-  border-radius: 5px;
-  padding: 0.5rem;
-  transition: all 0.2s linear;
+  color: #FA7D09;
+  position: relative;
+  cursor: pointer;
+  z-index: 9999;
 }
-.navbar-main .nav-list2 a:hover {
-  background: rgba(128, 128, 128, 0.301);
+.navbar-main .nav-list2 .user-div .user-profile {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  align-items: center;
+  display: flex;
+  gap: 0.3rem;
+  background: #fff;
+  box-shadow: 0 2px 4px #dedede;
+  padding: 1rem;
+  border-radius: 5px;
+  right: 0;
+  top: 100%;
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  transform-origin: right;
+  transform: scale(0);
+}
+.navbar-main .nav-list2 .user-div .show-profile {
+  opacity: 1;
+  transform: scale(1);
 }/*# sourceMappingURL=nav.css.map */

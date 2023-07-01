@@ -7,8 +7,8 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
 
   console.log('context');
-  // const url = "http://localhost:5001";
-  const url = "https://mathcode-admin.onrender.com";
+  const url = "http://localhost:5001";
+  // const url = "https://mathcode-admin.onrender.com";
   const [problems,setproblems] = useState([]);
   let [topics, setTopics] = useState([]);
   const fetch = async () => {
