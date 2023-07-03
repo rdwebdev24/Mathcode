@@ -82,14 +82,15 @@ export const Main = ({ setQuesId }) => {
       <Nav />
       <div className="main-wrp">
         <div className="problem-tags-wrapper">
-          <div className="tags-wrapper1">
+          <div className="user-wlcm"></div>
+          {/* <div className="tags-wrapper1">
             <div className="ques-level">
               <button>class 9th</button>
               <button>class 10th</button>
               <button>class 11th</button>
               <button>class 12th</button>
             </div>
-          </div>
+          </div> */}
 
           <div className="tags-wrapper2">
             <div className="tag2 diff">
