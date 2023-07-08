@@ -22,7 +22,7 @@ export const Nav = () => {
   return (
     <nav className="navbar-main">
       <div className="nav-list nav-list1">
-        <a href="/">mathcode</a>
+        <a href="/">π/2</a>
         <a href="/problem-set/all">practise</a>
         <a href="/test">test</a>
       </div>

@@ -1,20 +1,15 @@
 import { BrowserRouter, Routes , Route, useNavigate } from 'react-router-dom';
 import './App.css';
-import { Register } from './components/Register';
-import { Login } from './components/Login';
+import { Login } from './components/Landing/Login';
 import { useState } from 'react';
-import { Landing } from './components/Landing';
-import { UnderConst } from './components/UnderConst';
-import { Main } from './components/Main';
-import { Questionpage } from './components/Questionpage';
+import { Landing } from './components/Landing/Landing';
+import { UnderConst } from './components/Landing/UnderConst';
+import { Questionpage } from './components/main-web/Questionpage';
+import { Register } from './components/Landing/Register';
+import { Main } from './components/main-web/Main';
 
 function App() {
 
-  const [user,setUser] = useState({});
-  
-  const [quesId,setQuesId] = useState();
-  
-  
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,12 +18,13 @@ function App() {
           <Route path='register' element={<Register/>} />
           <Route path='404' element={<UnderConst/>} />
           <Route path='login' element={<Login/>} />
-          <Route path='question' element={<Questionpage quesId={quesId}/>} />
-          <Route path='problem-set/all' element={<Main setQuesId={setQuesId}/>} />
+          <Route path='question' element={<Questionpage />} />
+          <Route path='problems/all' element={<Main/>} />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
+
 
 export default App;

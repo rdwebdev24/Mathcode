@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { useGlobalContext } from '../config/Context';
+import { useGlobalContext } from '../../config/Context';
 import { useNavigate } from 'react-router-dom';
 import {AiFillGoogleCircle,AiFillLock} from 'react-icons/ai'
 import {FaUser} from 'react-icons/fa'
 import {getAuth , GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 import { initializeApp } from "firebase/app";
-import {authProvider} from '../config/Auth'
+import {authProvider} from '../../config/Auth'
 import axios from 'axios';
-import '../styles/landing-web/login.css'
-import { Loader } from './main-web/Loader';
+import '../../styles/landing-web/login.css'
+import { Loader } from '.././main-web/Loader';
 
 export const Login = () => {
     const [loading,setLoading] = useState(false)
@@ -39,13 +39,13 @@ export const Login = () => {
         setLoading(false);
         localStorage.setItem("mathcode-token",data.user.token)
         localStorage.setItem("mathcode-username",data.user.username)
-        navigate('/problem-set/all')
+        navigate('/problems/all')
     };
     
       const googleAuth = async () => {
             const login = await authProvider.login();
             console.log({login});
-            if(login=='login') navigate('/problem-set/all')
+            if(login=='login') navigate('/problems/all')
       }
 
   return (
@@ -60,10 +60,6 @@ export const Login = () => {
                 <div className="form-control">
                     <span><AiFillLock/></span>
                     <input placeholder='Password' name='password' type="password" id='password'/>
-                </div>
-                <div className="form-control">
-                    <input type="checkbox" name="remember" id="remember" />
-                    <span>Remember me</span>
                 </div>
                 <button className='register-btn login-btn' disabled={loading} type='submit'>{loading?<>login <Loader/></>:'login'}</button>
                 <a onClick={()=>navigate(`/register`)} className='create-acc' href="#">Create an account</a>

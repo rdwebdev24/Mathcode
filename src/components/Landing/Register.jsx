@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import {AiFillLock,AiOutlineUnlock} from 'react-icons/ai'
 import {GrMail} from 'react-icons/gr'
 import {FaUser} from 'react-icons/fa'
-import '../styles/landing-web/signup.css'
-import { useGlobalContext } from '../config/Context';
-import { Loader } from './main-web/Loader';
+import '../../styles/landing-web/signup.css'
+import { useGlobalContext } from '../../config/Context';
+import { Loader } from '.././main-web/Loader';
 
 export const Register = () => {
     const [loading,setLoading] = useState(false)
@@ -39,7 +39,7 @@ export const Register = () => {
         if(data.status==400){alert(data.msg);setLoading(false);return};
         localStorage.setItem("mathcode-token",data.user.token)
         localStorage.setItem("mathcode-username",data.user.username)
-        navigate('/problem-set/all')
+        navigate('/problems/all')
       };
   return (
     <section className='signup-wrapper'>

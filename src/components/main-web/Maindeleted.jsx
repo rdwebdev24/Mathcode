@@ -234,71 +234,7 @@ export const Main = ({ setQuesId }) => {
             </div>
           </div>
         </div>
-        <div className="main-aside">
-          <div className="pfl-wrp">
-            <div className="pfl1">
-              <div className="div1"></div>
-              <div className="div2"></div>
-              <div className="div3">
-                <img src={rohit} alt="rohit" />
-                <p>{username}</p>
-              </div>
-            </div>
-            <div className="pfl2">
-              <div className="pfl-ttl-prbl">
-                <span>Total problem solved 126</span>
-                <div className="ttl-icon">
-                  <BsFillBarChartFill />
-                </div>
-              </div>
-              <div className="pfl-acry">
-                <span>Accuracy 86%</span>
-                <div className="acry-icon">
-                  <BsCheck2Circle />
-                </div>
-              </div>
-            </div>
-            <div className="pfl3">
-              <div className="pfl-diff">
-                <div className="pfl-diff-info">
-                  <span>Easy</span>
-                  <span>150/1200</span>
-                </div>
-                <div className="pfl-diff-pgrs">
-                  <div className="pgs-wid pgs-esy-wid"></div>
-                </div>
-              </div>
-              <div className="pfl-diff">
-                <div className="pfl-diff-info">
-                  <span>Medium</span>
-                  <span>150/1200</span>
-                </div>
-                <div className="pfl-diff-pgrs">
-                  <div className="pgs-wid pgs-mdm-wid"></div>
-                </div>
-              </div>
-              <div className="pfl-diff">
-                <div className="pfl-diff-info">
-                  <span>Hard</span>
-                  <span>150/1200</span>
-                </div>
-                <div className="pfl-diff-pgrs">
-                  <div className="pgs-wid pgs-hrd-wid"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="test-wrp">
-              {upcmTest.map((item)=>{
-                return (
-                  <div className="tst-info">
-                    <FaTrophy/>
-                    <span>{item}</span>
-                  </div>
-                )
-              })}
-          </div>
-        </div>
+      
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "../config/Context";
+import { useGlobalContext } from "../../config/Context";
 import { AiOutlineLike, AiFillStar,AiOutlineDislike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
-import { Nav } from "./main-web/Nav";
+import { Nav } from "./Nav";
 import axios from "axios";
-import '../styles/main-web/QuesPage.css'
+import '../../styles/main-web/QuesPage.css'
 
 export const Questionpage = () => {
-  const { url, problems } = useGlobalContext();
+  const { url, problems ,setReload,reload} = useGlobalContext();
   const [corrans, setCorrAns] = useState("");
   const [isSelected,setIsSelected] = useState('')
   const [quesId,setQuesId] = useState(localStorage.getItem('mathcode-quesId'))
@@ -30,31 +30,32 @@ export const Questionpage = () => {
   const submitHabdler = async (e) => {
     e.preventDefault();
     const optionSpans = document.querySelectorAll('.opt')
-    console.log({corrans},singleQues.options[singleQues.corrAns].trim());
+    const headers = {
+      "Access-Control-Allow-Origin": "*",
+      "Content-type": "application/json",
+      mode: "no-cors",
+    };
+    const usrData = {
+      username: localStorage.getItem("mathcode-username"),
+      quesId,
+    };
     if (singleQues.options[singleQues.corrAns] == corrans) {
+      usrData.status = "solved"
       optionSpans[singleQues.corrAns].classList.add('correct')
       const isLogin = localStorage.getItem("mathcode-username");
       if (isLogin) {
-        const headers = {
-          "Access-Control-Allow-Origin": "*",
-          "Content-type": "application/json",
-          mode: "no-cors",
-        };
-        const usrData = {
-          username: localStorage.getItem("mathcode-username"),
-          quesId,
-        };
         const { data } = await axios.post(url + "/userques", usrData, headers);
-        console.log(data);
+        // await axios.post(url + "/submission", {quesId,username:localStorage.getItem("mathcode-username")}, headers);
       }
     }
     else{
+      usrData.status = "attempt"
+      const { data } = await axios.post(url + "/userques", usrData, headers);
       const optionSpans = document.querySelectorAll('.opt');
       const idx = singleQues.options.indexOf(corrans)
-      console.log({idx});
-      optionSpans[idx].classList.add('incorrect')
-
+      optionSpans[idx].classList.add('incorrect');
     }
+    setReload(!reload)
   };
   useEffect(() => {
     if(problems.length!=0) {
@@ -63,6 +64,7 @@ export const Questionpage = () => {
       setSingleQues(Ques);
     }
   },[problems]);
+
   return (
     <>
       <Nav />
@@ -72,8 +74,8 @@ export const Questionpage = () => {
         <h4 className="ques-type">{singleQues.type}</h4>
             <div className="tags-section">
                 <span className={`${singleQues.difficulty} q-diff`}>{singleQues.difficulty}</span>
-                <span className="q-like">3.2k <AiOutlineLike/></span>
-                <span className="q-dislike">5.2k <BiDislike/></span>
+                <span className="q-like">{singleQues.likes} <AiOutlineLike/></span>
+                <span className="q-dislike">{singleQues.dislikes}<BiDislike/></span>
                 <span className="q-star"><AiFillStar/></span>
             </div>
             <p className="ques-desc">{singleQues.desc}</p>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {AiOutlineRight} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import '../styles/landing-web/landing.css'
+import '../../styles/landing-web/landing.css'
 
 
 export const Landing = () => {
@@ -10,7 +10,7 @@ export const Landing = () => {
     <section className='landing-wrapper'>
         <nav className='navbar'>
           <h2>mathcode</h2>
-          <h3 className='nav-ques' onClick={()=>navigate('/problem-set/all')}>Questions</h3>
+          <h3 className='nav-ques' onClick={()=>navigate('/problems/all')}>Questions</h3>
         </nav>
         <div className="landing-card">
             <h2>A new way to practise maths</h2>
