@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../../config/Context";
 import { AiOutlineLike, AiFillStar,AiOutlineDislike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
+import { RxCross2 } from "react-icons/rx";
 import { Nav } from "./Nav";
 import axios from "axios";
 import '../../styles/main-web/QuesPage.css'
@@ -78,6 +79,9 @@ export const Questionpage = () => {
     <div className="quespage-wrapper">
 
     <div className="signup-popup">
+      <div onClick={()=>{
+        document.querySelector('.signup-popup').classList.remove('show-signup');
+      }} className="sgnup-cross"> <RxCross2/> </div>
       <div className="signup-info">
         <h4>Not a π/2 User ?</h4>
         <p>Please signup first to submit question</p>

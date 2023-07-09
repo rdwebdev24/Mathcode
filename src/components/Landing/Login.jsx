@@ -46,7 +46,7 @@ export const Login = () => {
       const googleAuth = async () => {
             const login = await authProvider.login();
             console.log({login});
-            if(login=='login') navigate('/problems/all')
+            if(login=='login') {navigate('/problems/all'); setReload(!reload);}
       }
 
   return (

@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes , Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Login } from './components/Landing/Login';
-import { useState } from 'react';
 import { Landing } from './components/Landing/Landing';
-import { UnderConst } from './components/Landing/UnderConst';
 import { Questionpage } from './components/main-web/Questionpage';
 import { Register } from './components/Landing/Register';
 import { Main } from './components/main-web/Main';
+import { PageNotFound } from './PageNotFound';
+import { UnderConst } from './components/main-web/UnderConst';
 
 function App() {
 
@@ -20,6 +20,8 @@ function App() {
           <Route path='login' element={<Login/>} />
           <Route path='question' element={<Questionpage />} />
           <Route path='problems/all' element={<Main/>} />
+          <Route path='underconstruction' element={<UnderConst/>} />
+          <Route path='*' element={<PageNotFound/>} />
         </Routes>
       </BrowserRouter>
     </div>

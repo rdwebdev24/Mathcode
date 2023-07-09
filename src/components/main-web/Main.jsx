@@ -108,30 +108,6 @@ export const Main = () => {
   
   useEffect(() => {
 
-    // navbar hover animation 
-    const overlay = document.querySelector(".overlay");
-    const nav_list = document.querySelectorAll(".r-sdbr-icon");
-
-    // running a for loop for over all the items of sidebar
-    nav_list.forEach((list) => {
-      list.addEventListener("mouseover", () => {
-        //  getting the kundli of that element
-        let position = list.getBoundingClientRect();
-        // assigning the positon and height , width of that element to the overlay
-        overlay.classList.add("overlay-active");
-        overlay.style.left = position.x + "px";
-        overlay.style.top = position.y + "px";
-        overlay.style.height = position.height + "px";
-        overlay.style.width = position.width + "px";
-        // changing the element icon color
-        list.style.color = "#fff";
-      });
-      list.addEventListener("mouseout", () => {
-        list.style.color = "#6f6f6f";
-        overlay.classList.remove("overlay-active");
-      });
-    });
-
     // setting filter object to the localstorage ( in order to retain the set filters )
     localStorage.setItem("filters", JSON.stringify(filters));
 
@@ -165,11 +141,39 @@ export const Main = () => {
     cancelBtn.addEventListener('mouseover',()=>{
       backgroundDiv.style.left = `${50}%`
     })
-  
+
+    const navlist = document.querySelectorAll('.r-sdbr-icon');
+
+    const dim = navlist[0].getBoundingClientRect();
+    const overlay = document.querySelector('.overlay');
+    overlay.style.width = dim.width+'px'
+    overlay.style.height = dim.height+'px'
+    overlay.style.top = dim.y+'px'
+
+    navlist.forEach((item)=>{
+      item.addEventListener('mouseover',(e)=>{
+        overlay.style.top = item.getBoundingClientRect().y+'px'
+        overlay.style.opacity = 1;
+      })
+      item.addEventListener('mouseout',(e)=>{
+        overlay.style.opacity = 0;
+      })
+    })
+    
+    
+    document.body.addEventListener('mousemove',(e)=>{
+      const mx = e.clientX;
+      const rSidebar = document.querySelector('.r-sidebar');
+      if(rSidebar!=null){
+        const wid = rSidebar.getBoundingClientRect().width;
+        if(mx == 0) rSidebar.style.transform = 'translate(0)'
+        if(mx>wid) rSidebar.style.transform = 'translate(-100%,0)'
+      }
+    })
+      
 
   }, [filters,solvedQues]);
-
-
+ 
 
   return (
     <div className="main-wrapper">
@@ -193,23 +197,28 @@ export const Main = () => {
 
       <div className="r-sidebar">
         <div className="overlay"></div>
-        <span title="Home" onClick={()=>navigate('/')} className="r-sdbr-icon">
-          <AiFillHome />
-        </span>
-        <span title="learn" className="r-sdbr-icon">
-          <FaGraduationCap />
-        </span>
-        <span title="dark mode" className="r-sdbr-icon">
-          <BsSunFill />
-        </span>
-        <span title={`${user?"Logout":"sign up"}`}
+          <div className="r-sidebar-logo"><h2 >π/2</h2></div>
+        <div title="Home" onClick={()=>navigate('/')} className="r-sdbr-icon">
+          <span> <AiFillHome /></span>
+          <span> Home </span>
+        </div>
+        <div onClick={()=>{navigate('/underconstruction')}} title="learn" className="r-sdbr-icon">
+          <span> <FaGraduationCap /></span>
+          <span>learn</span>
+        </div>
+        <div title="dark mode" className="r-sdbr-icon">
+         <span> <BsSunFill /> </span>
+          <span>dark Mode</span>
+        </div>
+        <div title={`${user?"Logout":"sign up"}`}
           className="r-sdbr-icon"
           onClick={() => {
             user?document.querySelector('.logout-popup').classList.add('show-logout'):navigate("/register");
           }}
         >
-         {user?<BiLogOutCircle />:<BiLogInCircle/>} 
-        </span>
+         <span>{user?<BiLogOutCircle />:<BiLogInCircle/>}</span>
+          <span>{user?"logout":"sign up"}</span>
+        </div>
       </div>
 
       <div className="mid-wrapper">
@@ -220,8 +229,8 @@ export const Main = () => {
                 <h1>π/2</h1>
               </div>
               <ul>
-                <li>test</li>
-                <li>courses</li>
+                <li onClick={()=>{navigate('/underconstruction')}}>test</li>
+                <li onClick={()=>{navigate('/underconstruction')}}>courses</li>
                 <li className="notify">
                   <BsFillBellFill />
                 </li>
@@ -229,7 +238,7 @@ export const Main = () => {
             </div>
             <div className="hello-wrp">
               <h1>Hii...</h1>
-              <h2>Welcome Rohit dhakad</h2>
+              <h2>Welcome {user?user:"user"}</h2>
             </div>
           </div>
           <div className="mid-top-right">
