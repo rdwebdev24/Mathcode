@@ -12,7 +12,7 @@ import { Loader } from '.././main-web/Loader';
 
 export const Login = () => {
     const [loading,setLoading] = useState(false)
-    const {url} = useGlobalContext();
+    const {url,setReload,reload} = useGlobalContext();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -39,7 +39,8 @@ export const Login = () => {
         setLoading(false);
         localStorage.setItem("mathcode-token",data.user.token)
         localStorage.setItem("mathcode-username",data.user.username)
-        navigate('/problems/all')
+        setReload(!reload);
+        navigate('/problems/all');
     };
     
       const googleAuth = async () => {

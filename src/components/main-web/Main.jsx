@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome,AiOutlinePoweroff } from "react-icons/ai";
 import { FaGraduationCap, FaUserGraduate } from "react-icons/fa";
 import { BsSunFill, BsFillBellFill, BsCheck2All, BsChevronDown, BsChevronUp, BsCheck2, BsDashLg } from "react-icons/bs";
 import { BiLogOutCircle, BiSearch,BiLogInCircle } from "react-icons/bi";
@@ -17,7 +17,7 @@ export const Main = () => {
   // For navigation between the pages 
   const navigate = useNavigate();
   // Getting all the required states from Context 
-  const { url, topics, problems , atmpQues , solvedQues ,  totalEasy, totalMedium, totalHard } = useGlobalContext();
+  const { url, topics, problems , atmpQues ,setReload,reload, solvedQues ,  totalEasy, totalMedium, totalHard } = useGlobalContext();
   
   const [filterQues, setFilterQues] = useState(problems);
 
@@ -181,8 +181,9 @@ export const Main = () => {
             localStorage.removeItem("mathcode-token");
             localStorage.removeItem("mathcode-username");
             localStorage.removeItem("filters");
-            user?navigate("/login"):navigate("/register")
-          }}>logout</div>
+            navigate("/login")
+            setReload(!reload)
+          }}>logout <AiOutlinePoweroff/></div>
           <div className="cancel" onClick={()=>{
              document.querySelector('.logout-popup').classList.remove('show-logout')
           }}>cancel</div>
@@ -204,7 +205,7 @@ export const Main = () => {
         <span title={`${user?"Logout":"sign up"}`}
           className="r-sdbr-icon"
           onClick={() => {
-            document.querySelector('.logout-popup').classList.add('show-logout')
+            user?document.querySelector('.logout-popup').classList.add('show-logout'):navigate("/register");
           }}
         >
          {user?<BiLogOutCircle />:<BiLogInCircle/>} 

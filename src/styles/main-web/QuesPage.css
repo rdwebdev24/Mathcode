@@ -1,6 +1,64 @@
 .quespage-wrapper {
   justify-content: center;
   display: flex;
+  position: relative;
+}
+.quespage-wrapper .signup-popup {
+  position: fixed;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  top: 47%;
+  left: 50%;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+  z-index: 999;
+}
+.quespage-wrapper .signup-popup .signup-info {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #555;
+  border-bottom: 1px solid #d9d9d9;
+}
+.quespage-wrapper .signup-popup .signup-info h4 {
+  text-align: center;
+}
+.quespage-wrapper .signup-popup .signup-btn {
+  cursor: pointer;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.quespage-wrapper .signup-popup .signup-btn:hover {
+  color: #fff;
+}
+.quespage-wrapper .signup-popup .signup-btn:hover::before {
+  transform: translate(0, 0);
+}
+.quespage-wrapper .signup-popup .signup-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translate(0, 100%);
+  background: #6c6c6c;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+.quespage-wrapper .show-signup {
+  top: 45%;
+  visibility: visible;
+  opacity: 1;
 }
 .quespage-wrapper .quespage-card {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2039215686);

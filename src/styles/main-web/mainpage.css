@@ -36,6 +36,10 @@
   transition: all 0.2s ease;
   z-index: 2;
   color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
 }
 .main-wrapper .logout-popup .logout-btn .background {
   position: absolute;
@@ -337,8 +341,6 @@
   text-align: center;
 }
 .main-wrapper .l-sidebar {
-  overflow-y: scroll;
-  height: 100vh;
   width: 26rem;
   border: 1px solid #eee;
   transition: all 0.3s ease-in;
@@ -347,9 +349,6 @@
   padding: 0 1rem;
   gap: 1.2rem;
   background: #fff;
-}
-.main-wrapper .l-sidebar::-webkit-scrollbar {
-  display: none;
 }
 .main-wrapper .l-sidebar .user-img-name {
   color: #767676;

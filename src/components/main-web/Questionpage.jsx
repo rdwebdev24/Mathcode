@@ -5,8 +5,10 @@ import { BiDislike } from "react-icons/bi";
 import { Nav } from "./Nav";
 import axios from "axios";
 import '../../styles/main-web/QuesPage.css'
+import { useNavigate } from "react-router-dom";
 
 export const Questionpage = () => {
+  const navigate = useNavigate();
   const { url, problems ,setReload,reload} = useGlobalContext();
   const [corrans, setCorrAns] = useState("");
   const [isSelected,setIsSelected] = useState('')
@@ -28,6 +30,12 @@ export const Questionpage = () => {
   }
 
   const submitHabdler = async (e) => {
+    const user = localStorage.getItem('mathcode-username');
+    if(!user){
+      console.log('aaa');
+      document.querySelector('.signup-popup').classList.add('show-signup')
+      return;
+    }
     e.preventDefault();
     const optionSpans = document.querySelectorAll('.opt')
     const headers = {
@@ -45,7 +53,6 @@ export const Questionpage = () => {
       const isLogin = localStorage.getItem("mathcode-username");
       if (isLogin) {
         const { data } = await axios.post(url + "/userques", usrData, headers);
-        // await axios.post(url + "/submission", {quesId,username:localStorage.getItem("mathcode-username")}, headers);
       }
     }
     else{
@@ -69,6 +76,18 @@ export const Questionpage = () => {
     <>
       <Nav />
     <div className="quespage-wrapper">
+
+    <div className="signup-popup">
+      <div className="signup-info">
+        <h4>Not a π/2 User ?</h4>
+        <p>Please signup first to submit question</p>
+      </div>
+      <div className="signup-btn" onClick={()=>{
+        document.querySelector('.signup-popup').remove('show-signup');
+        navigate('/register');
+      }}>signup</div>
+    </div>
+
       {problems.length==0?"":
       <div className='quespage-card'>
         <h4 className="ques-type">{singleQues.type}</h4>
