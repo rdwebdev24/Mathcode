@@ -21,6 +21,8 @@ export const Main = () => {
   
   const [filterQues, setFilterQues] = useState(problems);
 
+  const [accuracy,setAccuracy] = useState(0);
+
   // states for showing the filters dropdown  
   const [showDiff, setShowDiff] = useState(false);
   const [showClass, setShowClass] = useState(false);
@@ -65,7 +67,7 @@ export const Main = () => {
     const user = localStorage.getItem('mathcode-username');4
     if(!user){setFilterQues(problems);return;}
     const todoQues = problems.filter((item) => {
-      return (!solvedQues.includes(item._id) && !atmpQues.includes(item._id))
+      return (!solvedQues.some((ques)=>ques.id==item._id) && !atmpQues.some((ques)=>ques.id==item._id))
     });
     setFilterQues(todoQues)
   }
@@ -79,7 +81,7 @@ export const Main = () => {
     if(!user){setFilterQues([]);return;}
     var solved = [];
     problems.forEach((item)=>{
-      atmpQues.includes(item._id)?solved.push(item):""
+      atmpQues.some((ques)=>ques.id==item._id)?solved.push(item):""
     })
     setFilterQues(solved)
   }
@@ -90,7 +92,7 @@ export const Main = () => {
     if(!user){setFilterQues([]);return;}
     var solved = [];
     problems.forEach((item)=>{
-      solvedQues.includes(item._id)?solved.push(item):""
+      solvedQues.some((ques)=>ques.id==item._id)?solved.push(item):""
     })
     setFilterQues(solved)
   }
@@ -119,7 +121,7 @@ export const Main = () => {
     var medium = 0;
     var hard = 0;
     problems.forEach((item)=>{
-      if(solvedQues.includes(item._id)){
+      if(solvedQues.some((ques)=>ques.id==item._id)){
         if(item.Ques.difficulty=="easy") easy++;
         if(item.Ques.difficulty=="medium") medium++;
         if(item.Ques.difficulty=="hard") hard++;
@@ -129,6 +131,12 @@ export const Main = () => {
     setUserEasy(easy)
     setUserMedium(medium)
     setUserHard(hard)
+
+    var totalpreviouswrong = 0;
+    solvedQues.forEach((item)=> totalpreviouswrong += item.previouswrong)
+    const totalSolved = solvedQues.length;
+    const totalwrong = totalSolved  + totalpreviouswrong;
+    setAccuracy((totalSolved*100)/totalwrong)
 
     const logoutBtn = document.querySelector('.logout');
     const cancelBtn = document.querySelector('.cancel');
@@ -421,7 +429,7 @@ export const Main = () => {
                 <div
                   style={{
                     borderLeft: `${
-                      solvedQues.some((ques)=>ques==id)
+                      solvedQues.some((ques)=>ques.id==id)
                         ? "3px solid #22c06f"
                         : "3px solid grey"
                     }`,
@@ -435,12 +443,12 @@ export const Main = () => {
                 >
                   <div
                     style={{
-                      color: `${ solvedQues.some((ques)=>ques==id) ? "#22c06f" : "grey"}`,
+                      color: `${ solvedQues.some((ques)=>ques.id==id) ? "#22c06f" : "grey"}`,
                     }}
                     className="status"
                   >
-                    {solvedQues.some((ques)=>ques==id)?<BsCheck2All /> :""}
-                    {atmpQues.some((ques)=>ques==id)?<BsCheck2 /> : ""}
+                    {solvedQues.some((ques)=>ques.id==id)?<BsCheck2All /> :""}
+                    {atmpQues.some((ques)=>ques.id==id)?<BsCheck2 /> : ""}
                     
                   </div>
                   <div className="title">{desc.slice(0, 30)}...</div>
@@ -466,7 +474,7 @@ export const Main = () => {
           </div>
           <div className="acry">
             <h2>Your Accuracy</h2>
-            <h1>69%</h1>
+            <h1>{accuracy.toFixed(1)}%</h1>
           </div>
         </div>
         <div className="esy-mdm-hrd">
