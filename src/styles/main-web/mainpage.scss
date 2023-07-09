@@ -7,6 +7,55 @@
   display: flex;
   min-height: 100vh;
   font-size: 0.9rem;
+  position: relative;
+
+    .logout-popup{
+      color: #767676;
+      background: #fff;
+      border: 1px solid #d9d9d9;
+      position: fixed;
+      border-radius: 3px;
+      transform: translate(-50%,-50%);
+      top: 52%;
+      left: 50%;
+      z-index: 9999;
+      transition: all 0.3s ease;
+      visibility: hidden;
+      opacity: 0;
+      .logout-txt{
+        padding:1rem;
+        border-radius: 3px;
+      }
+      .logout-btn{
+        display: flex;
+        position: relative;
+        .logout,.cancel{
+          mix-blend-mode: difference;
+          cursor: pointer;
+          width: 100%;
+          text-align: center;
+          padding:0.8rem 1rem;
+          transition: all 0.2s ease;
+          z-index: 2;
+          color: red;
+        }
+        .background {
+          position: absolute;
+          top: 0;
+          left: 0%;
+          width: 50%;
+          height: 100%;
+          z-index: 1;
+          background-color: #000;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+    .show-logout{
+      visibility: visible;
+      opacity: 1;
+      top: 50%;
+    }
 
   .r-sidebar {
     height: 100vh;

@@ -6,8 +6,8 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   console.log('ctx');
-  // const url = "http://localhost:5001";
-  const url = "https://mathcode-admin.onrender.com";
+  const url = "http://localhost:5001";
+  // const url = "https://mathcode-admin.onrender.com";
   const [problems,setproblems] = useState([]);
   const [totalEasy,setTotalEasy] = useState(0);
   const [totalMedium,setTotalMedium] = useState(0);

@@ -26,6 +26,9 @@ export const Main = () => {
   const [showClass, setShowClass] = useState(false);
   const [showTopic, setShowTopic] = useState(false);
 
+  // state for showing logout popup
+  const [showlogout,setShowLogout] = useState(false)
+
   // states for e storing asy medium hard ques count done by user 
   const [userEasy,setUserEasy] = useState(0)
   const [userMedium,setUserMedium] = useState(0)
@@ -141,7 +144,6 @@ export const Main = () => {
     var hard = 0;
     problems.forEach((item)=>{
       if(solvedQues.includes(item._id)){
-        console.log(item.Ques.difficulty);
         if(item.Ques.difficulty=="easy") easy++;
         if(item.Ques.difficulty=="medium") medium++;
         if(item.Ques.difficulty=="hard") hard++;
@@ -152,12 +154,42 @@ export const Main = () => {
     setUserMedium(medium)
     setUserHard(hard)
 
+    const logoutBtn = document.querySelector('.logout');
+    const cancelBtn = document.querySelector('.cancel');
+    const backgroundDiv = document.querySelector('.background');
+  
+    logoutBtn.addEventListener('mouseover',(e)=>{
+      backgroundDiv.style.left = `${0}%`
+    })
+    
+    cancelBtn.addEventListener('mouseover',()=>{
+      backgroundDiv.style.left = `${50}%`
+    })
+  
+
   }, [filters,solvedQues]);
 
-  // console.log({userEasy,userMedium,userHard});
+
 
   return (
     <div className="main-wrapper">
+
+      <div className="logout-popup">
+        <p className="logout-txt">Are you sure you want to logout ? </p>
+        <div className="logout-btn">
+          <div className="logout" onClick={()=>{
+            localStorage.removeItem("mathcode-token");
+            localStorage.removeItem("mathcode-username");
+            localStorage.removeItem("filters");
+            user?navigate("/login"):navigate("/register")
+          }}>logout</div>
+          <div className="cancel" onClick={()=>{
+             document.querySelector('.logout-popup').classList.remove('show-logout')
+          }}>cancel</div>
+          <div className="background"></div>
+        </div>
+      </div>
+
       <div className="r-sidebar">
         <div className="overlay"></div>
         <span title="Home" onClick={()=>navigate('/')} className="r-sdbr-icon">
@@ -172,10 +204,7 @@ export const Main = () => {
         <span title={`${user?"Logout":"sign up"}`}
           className="r-sdbr-icon"
           onClick={() => {
-            localStorage.removeItem("mathcode-token");
-            localStorage.removeItem("mathcode-username");
-            localStorage.removeItem("filters");
-            user?navigate("/login"):navigate("/register")
+            document.querySelector('.logout-popup').classList.add('show-logout')
           }}
         >
          {user?<BiLogOutCircle />:<BiLogInCircle/>} 
@@ -205,11 +234,11 @@ export const Main = () => {
           <div className="mid-top-right">
             <div className="streak">
               <p>Streak</p>
-              <h1>1285</h1>
+              <h1>69</h1>
             </div>
             <div className="credit">
               <p>Credit</p>
-              <h1>128</h1>
+              <h1>696</h1>
             </div>
           </div>
         </div>
@@ -423,11 +452,11 @@ export const Main = () => {
         <div className="ttl-acry-wrp">
           <div className="ttl">
             <h2>Total solved</h2>
-            <h1>126</h1>
+            <h1>{userEasy+userHard+userMedium}</h1>
           </div>
           <div className="acry">
             <h2>Your Accuracy</h2>
-            <h1>86%</h1>
+            <h1>69%</h1>
           </div>
         </div>
         <div className="esy-mdm-hrd">
@@ -437,7 +466,7 @@ export const Main = () => {
               <span>{userEasy}/{totalEasy}</span>
             </div>
             <div className="emh-pgrs">
-              <div className="pgrs"></div>
+              <div style={{width:`${userEasy*100/totalEasy}%`}} className="pgrs"></div>
             </div>
           </div>
           <div className="emh">
@@ -446,7 +475,7 @@ export const Main = () => {
               <span>{userMedium}/{totalMedium}</span>
             </div>
             <div className="emh-pgrs">
-              <div className="pgrs"></div>
+              <div style={{width:`${userMedium*100/totalMedium}%`}} className="pgrs"></div>
             </div>
           </div>
           <div className="emh">
@@ -455,7 +484,7 @@ export const Main = () => {
               <span>{userHard}/{totalHard}</span>
             </div>
             <div className="emh-pgrs">
-              <div className="pgrs"></div>
+              <div style={{width:`${userHard*100/totalHard}%`}} className="pgrs"></div>
             </div>
           </div>
         </div>
