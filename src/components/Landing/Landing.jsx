@@ -9,7 +9,7 @@ export const Landing = () => {
   return (
     <section className='landing-wrapper'>
         <nav className='navbar'>
-          <h2>mathcode</h2>
+          <h2>π/2</h2>
           <h3 className='nav-ques' onClick={()=>navigate('/problems/all')}>Questions</h3>
         </nav>
         <div className="landing-card">
