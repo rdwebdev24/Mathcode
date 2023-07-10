@@ -136,7 +136,11 @@ export const Main = () => {
     solvedQues.forEach((item)=> totalpreviouswrong += item.previouswrong)
     const totalSolved = solvedQues.length;
     const totalwrong = totalSolved  + totalpreviouswrong;
-    setAccuracy((totalSolved*100)/totalwrong)
+    console.log({totalpreviouswrong,totalSolved,totalwrong});
+    const acry = (totalSolved*100)/totalwrong;
+    if(totalSolved==0 && totalwrong==0) setAccuracy(0);
+    else setAccuracy(acry)
+    
 
     const logoutBtn = document.querySelector('.logout');
     const cancelBtn = document.querySelector('.cancel');

@@ -31,6 +31,7 @@ export const Questionpage = () => {
   }
 
   const submitHabdler = async (e) => {
+    if(corrans==''){alert("please select an option");return}
     const user = localStorage.getItem('mathcode-username');
     if(!user){
       console.log('aaa');

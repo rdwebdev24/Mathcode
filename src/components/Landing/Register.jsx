@@ -10,7 +10,7 @@ import { Loader } from '.././main-web/Loader';
 
 export const Register = () => {
     const [loading,setLoading] = useState(false)
-    const {url} = useGlobalContext();
+    const {url,reload,setReload} = useGlobalContext();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -39,6 +39,7 @@ export const Register = () => {
         if(data.status==400){alert(data.msg);setLoading(false);return};
         localStorage.setItem("mathcode-token",data.user.token)
         localStorage.setItem("mathcode-username",data.user.username)
+        setReload(!reload)
         navigate('/problems/all')
       };
   return (
